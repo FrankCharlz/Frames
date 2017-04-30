@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FrameApp</string>
+    <string name="pick_template">Select a template</string>
+</resources>

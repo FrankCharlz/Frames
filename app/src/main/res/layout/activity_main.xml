@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.mj.frameapp.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
+
+        <com.mj.frameapp.DopeTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frames App"
+            android:textSize="20sp"
+            android:textColor="#ffffff"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/ed_price"
+            android:hint="Price"
+            android:inputType="number"
+            style="@style/EditTextStyles"/>
+
+
+        <Button
+            android:text="CHOOSE TEMPLATE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:padding="8dp"
+            android:id="@+id/bth_choose_template"
+            android:onClick="chooseTemplate" />
+
+        <Button
+            android:text="CHOOSE PHOTO"
+            android:layout_width="209dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:padding="8dp"
+            android:id="@+id/bth_choose_photo"
+            android:onClick="choosePhoto" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

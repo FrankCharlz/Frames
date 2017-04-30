@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_editor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context="com.mj.frameapp.EditorActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary">
+
+        <com.mj.frameapp.DopeTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frames App"
+            android:textSize="20sp"
+            android:textColor="#ffffff"/>
+
+
+        <ImageView
+            android:id="@+id/btn_save"
+            android:onClick="save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_downward"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:adjustViewBounds="true" />
+
+        <ImageView
+            android:id="@+id/btn_share"
+            android:onClick="share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_share"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:adjustViewBounds="true" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/img_user_image"
+        android:adjustViewBounds="true" />
+
+</RelativeLayout>
