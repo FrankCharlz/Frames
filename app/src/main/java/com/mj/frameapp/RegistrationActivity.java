@@ -51,7 +51,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT
         ).show();
 
-        v.getContext().startActivity(new Intent(v.getContext(), MainActivity.class));
+        v.getContext().startActivity(new Intent(v.getContext(), ChooseImageActivity.class));
         finish();
     }
 }

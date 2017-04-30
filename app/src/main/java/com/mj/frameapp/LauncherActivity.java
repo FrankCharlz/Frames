@@ -16,7 +16,7 @@ public class LauncherActivity extends AppCompatActivity {
         MyApp.log("has done regis : "+hasDoneRegistration);
 
         if (hasDoneRegistration) {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, ChooseImageActivity.class));
             finish();
         } else {
             startActivity(new Intent(this, RegistrationActivity.class));

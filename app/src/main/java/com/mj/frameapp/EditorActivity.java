@@ -19,6 +19,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.tumblr.remember.Remember;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -31,7 +33,7 @@ public class EditorActivity extends AppCompatActivity {
     private Bitmap bitmap;
     private int IMAGE_SIZE = 1080;
     private Typeface typeface;
-    private String[] user_info_array;
+    private String[] user_info_array = new String[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +45,13 @@ public class EditorActivity extends AppCompatActivity {
         imageView.setOnTouchListener(new ImageTouchListener());
 
         Intent intent = getIntent();
-        String uri_string = intent.getStringExtra(MainActivity.USER_PIC_URI_AS_STRING);
-        String template_path = intent.getStringExtra(MainActivity.TEMPLATE_PATH_AS_STRING);
-        user_info_array = intent.getStringArrayExtra(MainActivity.USER_INFO_ARRAY);
+        String uri_string = CurrentItemInfo.uri; //// TODO: 30-Apr-17 dangerous
+        //String template_path = intent.getStringExtra(MainActivity.TEMPLATE_PATH_AS_STRING);
+        //MyApp.log("Template path : "+template_path);
 
-        MyApp.log("Template path : "+template_path);
-
+        user_info_array[0] = CurrentItemInfo.bei;
+        user_info_array[1] = Remember.getString("user-phone", "[phone no]");
+        user_info_array[2] = Remember.getString("insta-name", "[insta handle]");
 
         Uri uri = Uri.parse(uri_string);
 
@@ -89,7 +92,8 @@ public class EditorActivity extends AppCompatActivity {
             canvas.drawBitmap(selectedImage, null, rectf, null);
 
 
-            Bitmap template = BitmapFactory.decodeFile(template_path);
+            //Bitmap template = BitmapFactory.decodeFile(template_path);
+            Bitmap template = loadTemplate(this);
             canvas.drawBitmap(template, null, new RectF(0,0,1080,1080), null); //// TODO: 21-Jan-17 might be CPU intensive
 
             Paint paint = new Paint();

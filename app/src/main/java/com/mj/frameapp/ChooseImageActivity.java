@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.File;
+
 public class ChooseImageActivity extends AppCompatActivity {
 
     private static final int ACTION_REQUEST_GALLERY = 9;
+    private static final String USER_PIC_URI_AS_STRING = "pic_uri";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +21,6 @@ public class ChooseImageActivity extends AppCompatActivity {
     }
 
     public void chooseImage(View view) {
-
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
 
@@ -47,7 +49,30 @@ public class ChooseImageActivity extends AppCompatActivity {
         }
     }
 
-    private void startEditActivity(Uri imageuri) {
+    private void startEditActivity(Uri uri) {
+        /***
+        String name = edName.getText().toString().trim().toLowerCase();
+        String price = edPrice.getText().toString().trim();
+        String phone = edPhone.getText().toString().trim();
 
+        if (!name.startsWith("@")) name = "@" + name;
+
+        if (!price.isEmpty()) price = numberWithCommas(price)+"/=";
+
+        File f = new File(MyApp.getTemplatesFolder(), selected_template);
+        if (!f.exists()) {
+            Toast.makeText(this, "Failed to load selected template", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        selected_template = f.getAbsolutePath();
+
+        String info[] = new String[] {price, phone, name};
+         */
+
+        CurrentItemInfo.uri = uri.toString();
+
+        Intent intent = new Intent(this, BeiActivity.class);
+        startActivity(intent);
     }
 }

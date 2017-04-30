@@ -22,7 +22,8 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".EditorActivity" />
-        <activity android:name=".ChooseImageActivity"></activity>
+        <activity android:name=".ChooseImageActivity" />
+        <activity android:name=".BeiActivity"></activity>
     </application>
 
 </manifest>
