@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mj.frameapp.activities.ChooseImageActivity;
 import com.tumblr.remember.Remember;
 
 public class RegistrationActivity extends AppCompatActivity {

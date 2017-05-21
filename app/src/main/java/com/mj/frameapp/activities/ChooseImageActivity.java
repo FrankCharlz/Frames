@@ -1,4 +1,4 @@
-package com.mj.frameapp;
+package com.mj.frameapp.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import java.io.File;
+import com.mj.frameapp.CurrentItemInfo;
+import com.mj.frameapp.MyApp;
+import com.mj.frameapp.R;
 
 public class ChooseImageActivity extends AppCompatActivity {
 
@@ -72,7 +74,7 @@ public class ChooseImageActivity extends AppCompatActivity {
 
         CurrentItemInfo.uri = uri.toString();
 
-        Intent intent = new Intent(this, BeiActivity.class);
+        Intent intent = new Intent(this, BeiWebActivity.class);
         startActivity(intent);
     }
 }

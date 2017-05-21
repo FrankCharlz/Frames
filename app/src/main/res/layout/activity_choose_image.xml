@@ -8,15 +8,23 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@color/dark_blue"
-    tools:context="com.mj.frameapp.ChooseImageActivity">
+    tools:context="com.mj.frameapp.activities.ChooseImageActivity">
 
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/plus"
         android:onClick="chooseImage" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@android:drawable/ic_menu_camera"
+        android:onClick="chooseImage" />
+
 
 
 </LinearLayout>

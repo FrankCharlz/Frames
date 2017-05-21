@@ -40,6 +40,7 @@ public class EditorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
+        MyApp.verifyStoragePermissions(this);
 
         ImageView imageView = (ImageView) findViewById(R.id.img_user_image);
         imageView.setOnTouchListener(new ImageTouchListener());
@@ -148,6 +149,7 @@ public class EditorActivity extends AppCompatActivity {
                 MyApp.getAppFolder(),  /* prefix */
                 imageFileName + ".png"  /* suffix */
         );
+        MyApp.log("out file: "+file.getAbsolutePath());
 
         OutputStream outputstream = null;
         try {
@@ -158,6 +160,8 @@ public class EditorActivity extends AppCompatActivity {
             return Uri.fromFile(file);
         } catch (FileNotFoundException e) {
             Toast.makeText(this, "Saving image failed", Toast.LENGTH_SHORT).show();
+            MyApp.log(e.getMessage());
+            MyApp.log(e.getLocalizedMessage());
             e.printStackTrace();
             return null;
         }

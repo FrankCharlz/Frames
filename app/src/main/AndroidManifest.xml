@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mj.frameapp">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,7 +13,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LauncherActivity">
+        <activity android:name=".activities.LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +23,10 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".EditorActivity" />
-        <activity android:name=".ChooseImageActivity" />
-        <activity android:name=".BeiActivity"></activity>
+        <activity android:name=".activities.ChooseImageActivity" />
+        <activity android:name=".BeiActivity" />
+        <activity android:name=".activities.RegWebActivity" />
+        <activity android:name=".activities.BeiWebActivity"></activity>
     </application>
 
 </manifest>
