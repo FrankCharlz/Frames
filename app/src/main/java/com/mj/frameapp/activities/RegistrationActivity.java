@@ -1,15 +1,18 @@
-package com.mj.frameapp;
+package com.mj.frameapp.activities;
 
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mj.frameapp.activities.ChooseImageActivity;
+import com.mj.frameapp.R;
 import com.tumblr.remember.Remember;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -26,6 +29,11 @@ public class RegistrationActivity extends AppCompatActivity {
         btnSubmit = (TextView) findViewById(R.id.bth_submit);
 
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     public void completeRegistration(View v) {

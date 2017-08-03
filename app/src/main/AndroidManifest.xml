@@ -20,13 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".EditorActivity" />
+        <activity android:name=".activities.RegistrationActivity" />
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.EditorActivity" />
         <activity android:name=".activities.ChooseImageActivity" />
-        <activity android:name=".BeiActivity" />
-        <activity android:name=".activities.RegWebActivity" />
-        <activity android:name=".activities.BeiWebActivity"></activity>
+        <activity android:name=".activities.BeiActivity" />
     </application>
 
 </manifest>

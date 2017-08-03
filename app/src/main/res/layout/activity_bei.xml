@@ -1,58 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/dark_blue"
-    tools:context="com.mj.frameapp.BeiActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:padding="16dp">
+    tools:context="com.mj.frameapp.activities.BeiActivity">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:orientation="vertical"
-            android:layout_gravity="center">
-
-            <EditText
-                android:id="@+id/ed_bei"
-                android:hint="Bei"
-                android:inputType="number"
-                style="@style/EditTextStyles"/>
-
+    <TextView
+        style="@style/ButtonStyles"
+        android:text="ENDELEA"
+        android:padding="16dp"
+        android:id="@+id/bth_submit"
+        android:onClick="doneIngizaBei"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
-            <EditText
-                android:id="@+id/ed_jina_la_bidhaa"
-                android:hint="Jina la bidhaa"
-                android:inputType="textPersonName"
-                style="@style/EditTextStyles"/>
-
-        </LinearLayout>
-
-
-        <com.mj.frameapp.DopeTextView
-            style="@style/ButtonStyles"
-            android:text="ENDELEA"
-            android:layout_width="200dp"
-            android:layout_margin="12dp"
-            android:padding="8dp"
-            android:id="@+id/bth_submit"
-            android:onClick="doneIngizaBei" />
+    <EditText
+        android:id="@+id/ed_jina_la_bidhaa"
+        android:hint="Jina la bidhaa"
+        android:inputType="textPersonName"
+        style="@style/EditTextStyles"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
 
 
-    </LinearLayout>
+    <EditText
+        android:id="@+id/ed_bei"
+        android:hint="Bei"
+        android:inputType="number"
+        style="@style/EditTextStyles"
+        android:layout_below="@id/ed_jina_la_bidhaa"
+        android:layout_alignLeft="@id/ed_jina_la_bidhaa"
+        android:layout_alignStart="@id/ed_jina_la_bidhaa"
+        />
 
 
-</LinearLayout>
+</RelativeLayout>

@@ -5,9 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.mj.frameapp.MyApp;
-import com.mj.frameapp.RegistrationActivity;
-import com.mj.frameapp.activities.ChooseImageActivity;
-import com.mj.frameapp.activities.RegWebActivity;
 import com.tumblr.remember.Remember;
 
 public class LauncherActivity extends AppCompatActivity {

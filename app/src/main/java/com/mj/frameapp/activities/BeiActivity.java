@@ -1,18 +1,25 @@
-package com.mj.frameapp;
+package com.mj.frameapp.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mj.frameapp.R;
 import com.tumblr.remember.Remember;
+
+import java.util.ArrayList;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class BeiActivity extends AppCompatActivity {
 
+    public static final String CURRENT_IMAGE_URI = "image-uri";
     private EditText edBei, edJina;
+    private String uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +29,13 @@ public class BeiActivity extends AppCompatActivity {
         edBei = (EditText) findViewById(R.id.ed_bei);
         edJina = (EditText) findViewById(R.id.ed_jina_la_bidhaa);
 
+        uri = getIntent().getStringExtra(CURRENT_IMAGE_URI);
+    }
+
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     public void doneIngizaBei(View v) {
@@ -37,11 +51,18 @@ public class BeiActivity extends AppCompatActivity {
             return;
         }
 
-        //kajaza zote
-        CurrentItemInfo.name = jina;
-        CurrentItemInfo.bei = bei;
 
-        v.getContext().startActivity(new Intent(v.getContext(), EditorActivity.class));
+       ArrayList<String> data = new ArrayList<>(3);
+        data.add(uri); //image uri
+        data.add(jina);
+        data.add(bei);
+        data.add(Remember.getString("user-phone", "[phone no]"));
+        data.add(Remember.getString("insta-name", "[insta handle]"));
+
+        Intent intent = new Intent(this, EditorActivity.class);
+        intent.putExtra(EditorActivity.CURRENT_DATA_MAP, data);
+
+        startActivity(intent);
         finish();
     }
 }

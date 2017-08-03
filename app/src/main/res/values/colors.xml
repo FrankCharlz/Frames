@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#4e4d50</color>
-    <color name="colorPrimaryDark">#101010</color>
-    <color name="colorAccent">#ffffff</color>
+    <color name="colorPrimary">#3c3c3c</color>
+    <color name="colorPrimaryDark">#040404</color>
+    <color name="colorAccent">#e4e4e4</color>
 
 
     <!-- saad colors -->

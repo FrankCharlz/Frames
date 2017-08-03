@@ -1,4 +1,4 @@
-package com.mj.frameapp;
+package com.mj.frameapp.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +19,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.mj.frameapp.MyApp;
+import com.mj.frameapp.R;
 import com.tumblr.remember.Remember;
 
 import java.io.File;
@@ -27,13 +29,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class EditorActivity extends AppCompatActivity {
 
+    public static final String CURRENT_IMAGE_URI = "image_uri";
+    public static final String CURRENT_DATA_MAP = "data_map";
     private Bitmap bitmap;
-    private int IMAGE_SIZE = 1080;
-    private Typeface typeface;
-    private String[] user_info_array = new String[3];
+    private static final int IMAGE_SIZE = 1080;
+    private ArrayList<String> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,17 +53,15 @@ public class EditorActivity extends AppCompatActivity {
         imageView.setOnTouchListener(new ImageTouchListener());
 
         Intent intent = getIntent();
-        String uri_string = CurrentItemInfo.uri; //// TODO: 30-Apr-17 dangerous
+        data = intent.getStringArrayListExtra(CURRENT_DATA_MAP);
+
         //String template_path = intent.getStringExtra(MainActivity.TEMPLATE_PATH_AS_STRING);
         //MyApp.log("Template path : "+template_path);
 
-        user_info_array[0] = CurrentItemInfo.bei;
-        user_info_array[1] = Remember.getString("user-phone", "[phone no]");
-        user_info_array[2] = Remember.getString("insta-name", "[insta handle]");
 
-        Uri uri = Uri.parse(uri_string);
+        Uri uri = Uri.parse(data.get(0));
 
-        typeface = Typeface.createFromAsset(getAssets(), "raleway.ttf");
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "opensans.ttf");
 
         final InputStream imageStream;
         try {
@@ -110,18 +115,22 @@ public class EditorActivity extends AppCompatActivity {
             String info[] = new String[] {"Price: ", "Phone: ", "Social: "};
             for (int i = 0; i < 3; i++) {
                 if (i == 2) {paint.setUnderlineText(true);}
-                canvas.drawText(info[i]+user_info_array[i], 150, text_start_y, paint);
+                canvas.drawText(info[i]+data.get(i+1), 150, text_start_y, paint);
                 text_start_y += (text_size + text_padding);
             }
 
             imageView.setImageBitmap(bitmap);
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+    }
+
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     private Bitmap loadTemplate(Context context) throws IOException {
@@ -176,7 +185,7 @@ public class EditorActivity extends AppCompatActivity {
         String text = "";
         String info[] = new String[] {"Price: ", "Phone: ", "Social: "};
         for (int i = 0; i < 3; i++) {
-            text += (info[i] + user_info_array[i] + "\n");
+            text += (info[i] + data.get(0) + "\n");
         }
 
         Intent sendIntent = new Intent();

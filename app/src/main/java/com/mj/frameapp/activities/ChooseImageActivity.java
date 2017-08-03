@@ -1,5 +1,6 @@
 package com.mj.frameapp.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -7,10 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.mj.frameapp.BeiActivity;
-import com.mj.frameapp.CurrentItemInfo;
 import com.mj.frameapp.MyApp;
 import com.mj.frameapp.R;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class ChooseImageActivity extends AppCompatActivity {
 
@@ -29,6 +30,12 @@ public class ChooseImageActivity extends AppCompatActivity {
 
         Intent chooser = Intent.createChooser(intent, "Choose a Picture");
         startActivityForResult(chooser, ACTION_REQUEST_GALLERY);
+    }
+
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
 
@@ -54,9 +61,8 @@ public class ChooseImageActivity extends AppCompatActivity {
 
     private void startEditActivity(Uri uri) {
 
-        CurrentItemInfo.uri = uri.toString();
-
         Intent intent = new Intent(this, BeiActivity.class);
+        intent.putExtra(BeiActivity.CURRENT_IMAGE_URI, uri.toString());
         startActivity(intent);
     }
 }

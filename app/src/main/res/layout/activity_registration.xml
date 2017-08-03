@@ -1,58 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/dark_blue"
-    tools:context="com.mj.frameapp.RegistrationActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:padding="16dp">
+    tools:context="com.mj.frameapp.activities.RegistrationActivity">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:orientation="vertical"
-            android:layout_gravity="center">
+    <TextView
+        style="@style/ButtonStyles"
+        android:text="ENDELEA"
+        android:id="@+id/bth_submit"
+        android:onClick="completeRegistration"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="20sp"
+        android:padding="16dp"/>
 
-            <EditText
-                android:id="@+id/ed_name"
-                android:hint="Username ya Instagram"
-                android:inputType="text"
-                style="@style/EditTextStyles"/>
+    <EditText
+        android:id="@+id/ed_phone"
+        android:hint="Namba ya simu"
+        android:inputType="phone"
+        style="@style/EditTextStyles"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/ed_name"
+        android:layout_alignEnd="@+id/ed_name" />
 
-
-
-            <EditText
-                android:id="@+id/ed_phone"
-                android:hint="Namba ya simu"
-                android:inputType="phone"
-                style="@style/EditTextStyles"/>
-
-        </LinearLayout>
-
-
-        <com.mj.frameapp.DopeTextView
-            style="@style/ButtonStyles"
-            android:text="ENDELEA"
-            android:layout_width="200dp"
-            android:layout_margin="12dp"
-            android:padding="8dp"
-            android:id="@+id/bth_submit"
-            android:onClick="completeRegistration" />
+    <EditText
+        android:id="@+id/ed_name"
+        android:hint="Username ya Instagram"
+        android:inputType="text"
+        style="@style/EditTextStyles"
+        android:layout_above="@+id/ed_phone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp" />
 
 
-    </LinearLayout>
-
-
-</LinearLayout>
+</RelativeLayout>

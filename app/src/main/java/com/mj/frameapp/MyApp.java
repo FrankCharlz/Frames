@@ -43,7 +43,7 @@ public class MyApp extends Application {
         // Create the storage directory if it does not exist
         if (! folder.exists()){
             if (! folder.mkdirs()){
-                MyApp.log("failed to create tmplates directory");
+                MyApp.log("failed to create templates directory");
                 return null;
             }
         }
@@ -57,7 +57,7 @@ public class MyApp extends Application {
         Remember.init(getApplicationContext(), "lilla");
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("raleway.ttf")
+                .setDefaultFontPath("opensans.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
