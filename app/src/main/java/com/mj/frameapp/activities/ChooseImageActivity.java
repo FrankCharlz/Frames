@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.mj.frameapp.BeiActivity;
 import com.mj.frameapp.CurrentItemInfo;
 import com.mj.frameapp.MyApp;
 import com.mj.frameapp.R;
@@ -52,29 +53,10 @@ public class ChooseImageActivity extends AppCompatActivity {
     }
 
     private void startEditActivity(Uri uri) {
-        /***
-        String name = edName.getText().toString().trim().toLowerCase();
-        String price = edPrice.getText().toString().trim();
-        String phone = edPhone.getText().toString().trim();
-
-        if (!name.startsWith("@")) name = "@" + name;
-
-        if (!price.isEmpty()) price = numberWithCommas(price)+"/=";
-
-        File f = new File(MyApp.getTemplatesFolder(), selected_template);
-        if (!f.exists()) {
-            Toast.makeText(this, "Failed to load selected template", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        selected_template = f.getAbsolutePath();
-
-        String info[] = new String[] {price, phone, name};
-         */
 
         CurrentItemInfo.uri = uri.toString();
 
-        Intent intent = new Intent(this, BeiWebActivity.class);
+        Intent intent = new Intent(this, BeiActivity.class);
         startActivity(intent);
     }
 }

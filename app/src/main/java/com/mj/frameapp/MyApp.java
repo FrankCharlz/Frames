@@ -12,6 +12,8 @@ import com.tumblr.remember.Remember;
 
 import java.io.File;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+
 /**
  * Created by Frank on 19-Jan-17.
  */
@@ -53,6 +55,12 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
         Remember.init(getApplicationContext(), "lilla");
+
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("raleway.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
     }
 
     // Storage Permissions
@@ -61,14 +69,6 @@ public class MyApp extends Application {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
-
-    /**
-     * Checks if the app has permission to write to device storage
-     *
-     * If the app does not has permission then the user will be prompted to grant permissions
-     *
-     * @param activity
-     */
     public static void verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
