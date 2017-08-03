@@ -31,4 +31,5 @@ dependencies {
 
 
     compile 'uk.co.chrisjenx:calligraphy:2.3.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

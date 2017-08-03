@@ -37,6 +37,7 @@ public class MyApp extends Application {
         return folder;
     }
 
+
     public static File getTemplatesFolder() {
         File folder = new File(Environment.getExternalStorageDirectory(), "framesapp/templates");
 

@@ -52,9 +52,6 @@ public class EditorActivity extends AppCompatActivity {
         Intent intent = getIntent();
         data = intent.getStringArrayListExtra(CURRENT_DATA_MAP);
 
-        //String template_path = intent.getStringExtra(MainActivity.TEMPLATE_PATH_AS_STRING);
-        //MyApp.log("Template path : "+template_path);
-
 
         Uri uri = Uri.parse(data.get(0));
 
@@ -131,7 +128,7 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     private Bitmap loadTemplate(Context context) throws IOException {
-        InputStream inputStream = getAssets().open("template1.png");
+        InputStream inputStream = getAssets().open("sample_template.png");
         return BitmapFactory.decodeStream(inputStream);
 
     }
@@ -182,7 +179,7 @@ public class EditorActivity extends AppCompatActivity {
         String text = "";
         String info[] = new String[] {"Name: ", "Price: ", "Phone: "};
         for (int i = 0; i < 3; i++) {
-            text += (info[i] + data.get(0) + "\n");
+            text += (info[i] + data.get(i+1) + "\n");
         }
 
         Intent sendIntent = new Intent();
@@ -201,6 +198,7 @@ public class EditorActivity extends AppCompatActivity {
                     event.getX() +", "+
                     event.getY()
             );
+
             return true;
         }
     }

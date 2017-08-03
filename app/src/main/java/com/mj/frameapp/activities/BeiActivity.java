@@ -2,13 +2,16 @@ package com.mj.frameapp.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.mj.frameapp.R;
+import com.squareup.picasso.Picasso;
 import com.tumblr.remember.Remember;
 
 import java.text.NumberFormat;
@@ -31,7 +34,13 @@ public class BeiActivity extends AppCompatActivity {
         edBei = (EditText) findViewById(R.id.ed_bei);
         edJina = (EditText) findViewById(R.id.ed_jina_la_bidhaa);
 
+
+
         uri = getIntent().getStringExtra(CURRENT_IMAGE_URI);
+        ImageView imageView = (ImageView) findViewById(R.id.image);
+
+        Picasso.with(this).load(Uri.parse(uri)).into(imageView);
+
     }
 
 
