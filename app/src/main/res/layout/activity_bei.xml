@@ -12,7 +12,6 @@
     <TextView
         style="@style/ButtonStyles"
         android:text="ENDELEA"
-        android:padding="16dp"
         android:id="@+id/bth_submit"
         android:onClick="doneIngizaBei"
         android:layout_alignParentBottom="true"
@@ -28,18 +27,17 @@
         android:inputType="textPersonName"
         style="@style/EditTextStyles"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
-
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/ed_bei"
         android:hint="Bei"
         android:inputType="number"
         style="@style/EditTextStyles"
-        android:layout_below="@id/ed_jina_la_bidhaa"
-        android:layout_alignLeft="@id/ed_jina_la_bidhaa"
-        android:layout_alignStart="@id/ed_jina_la_bidhaa"
-        />
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/ed_jina_la_bidhaa"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

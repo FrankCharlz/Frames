@@ -12,8 +12,8 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,7 +21,6 @@ import android.widget.Toast;
 
 import com.mj.frameapp.MyApp;
 import com.mj.frameapp.R;
-import com.tumblr.remember.Remember;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,13 +29,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class EditorActivity extends AppCompatActivity {
 
-    public static final String CURRENT_IMAGE_URI = "image_uri";
     public static final String CURRENT_DATA_MAP = "data_map";
     private Bitmap bitmap;
     private static final int IMAGE_SIZE = 1080;
@@ -112,7 +109,7 @@ public class EditorActivity extends AppCompatActivity {
             paint.setTextSize(text_size);
             paint.setTypeface(typeface);
 
-            String info[] = new String[] {"Price: ", "Phone: ", "Social: "};
+            String info[] = new String[] {"Name: ", "Price: ", "Phone: "};
             for (int i = 0; i < 3; i++) {
                 if (i == 2) {paint.setUnderlineText(true);}
                 canvas.drawText(info[i]+data.get(i+1), 150, text_start_y, paint);
@@ -183,7 +180,7 @@ public class EditorActivity extends AppCompatActivity {
 
         // preparing text
         String text = "";
-        String info[] = new String[] {"Price: ", "Phone: ", "Social: "};
+        String info[] = new String[] {"Name: ", "Price: ", "Phone: "};
         for (int i = 0; i < 3; i++) {
             text += (info[i] + data.get(0) + "\n");
         }

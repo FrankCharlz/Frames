@@ -11,7 +11,9 @@ import android.widget.Toast;
 import com.mj.frameapp.R;
 import com.tumblr.remember.Remember;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -51,8 +53,18 @@ public class BeiActivity extends AppCompatActivity {
             return;
         }
 
+        try {
+            bei = NumberFormat.getNumberInstance(Locale.US).format(Integer.parseInt(bei))+"/=";
+        } catch (NumberFormatException e) {
+            Toast.makeText(
+                    getApplicationContext(),
+                    "The price enterd is incorrect",
+                    Toast.LENGTH_SHORT
+            ).show();
+            return;
+        }
 
-       ArrayList<String> data = new ArrayList<>(3);
+        ArrayList<String> data = new ArrayList<>(3);
         data.add(uri); //image uri
         data.add(jina);
         data.add(bei);

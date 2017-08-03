@@ -6,6 +6,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="colorControlNormal">#c5c5c5</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlHighlight">@color/white80</item>
+
     </style>
 
     <style name="EditTextStyles" parent="Base.V12.Widget.AppCompat.EditText">
@@ -13,12 +18,14 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/ed_margin</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColorHint">@color/white80</item>
     </style>
 
     <style name="ButtonStyles" parent="Base.Widget.AppCompat.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/btn_padding</item>
+        <item name="android:textSize">@dimen/btn_text_size</item>
         <!--<item name="android:layout_margin">@dimen/ed_margin</item>-->
         <item name="android:background">@color/light_blue</item>
         <item name="android:textColor">@color/white</item>
