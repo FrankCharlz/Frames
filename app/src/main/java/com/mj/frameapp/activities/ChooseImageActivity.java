@@ -61,7 +61,7 @@ public class ChooseImageActivity extends AppCompatActivity {
 
     private void startEditActivity(Uri uri) {
 
-        Intent intent = new Intent(this, BeiActivity.class);
+        Intent intent = new Intent(this, ChooseTemplateActivity.class);
         intent.putExtra(BeiActivity.CURRENT_IMAGE_URI, uri.toString());
         startActivity(intent);
     }

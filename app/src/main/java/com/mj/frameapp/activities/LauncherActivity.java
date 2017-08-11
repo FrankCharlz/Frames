@@ -39,9 +39,11 @@ public class LauncherActivity extends AppCompatActivity {
 
     private void prepareTemplates() {
         File appFolder = MyApp.getTemplatesFolder();
-        if (appFolder == null) {
+
+        if (appFolder == null || appFolder.list() == null) {
             return;
         }
+
 
         //copy sample_template.png to app folder
         boolean sample_template_in_app_folder = false;

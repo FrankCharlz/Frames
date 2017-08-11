@@ -20,7 +20,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 public class MyApp extends Application {
 
     public static void log(String s) {
-        Log.e("frame-app", s);
+        Log.i("frames-app", s);
     }
 
     public static File getAppFolder() {

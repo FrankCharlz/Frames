@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.mj.frameapp.ImageUtils;
 import com.mj.frameapp.MyApp;
 import com.mj.frameapp.R;
 
@@ -51,73 +52,69 @@ public class EditorActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         data = intent.getStringArrayListExtra(CURRENT_DATA_MAP);
-
-
         Uri uri = Uri.parse(data.get(0));
 
+        String template_path = MyApp.getTemplatesFolder().listFiles()[0].getAbsolutePath();
         Typeface typeface = Typeface.createFromAsset(getAssets(), "opensans.ttf");
 
-        final InputStream imageStream;
+        Bitmap selectedImage = null;
         try {
-            imageStream = getContentResolver().openInputStream(uri);
-            Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-
-            int width = selectedImage.getWidth();
-            int height = selectedImage.getHeight();
-
-            int new_height, new_width;
-
-            int longest_side = (height > width) ? height : width;
-
-            new_height = (int)(height * 1.0 * IMAGE_SIZE / longest_side);
-            new_width =  (int)(width * 1.0 * IMAGE_SIZE / longest_side);
-
-            //rectf dimensions
-            int rectf_left = (IMAGE_SIZE - new_width)/2;
-            int rectf_right = rectf_left + new_width;
-            int rectf_top = (IMAGE_SIZE - new_height)/2;
-            int rectf_bottom = rectf_top + new_height;
-            RectF rectf = new RectF(rectf_left, rectf_top, rectf_right , rectf_bottom);
-
-            MyApp.log(width + " -- " + height);
-            MyApp.log(new_width + " -- " + new_height);
-
-            bitmap = Bitmap.createBitmap(IMAGE_SIZE, IMAGE_SIZE, null); //create new empty bitmap;
-
-            Canvas canvas = new Canvas(bitmap); //init canvas with bitmap for height
-            //canvas.drawARGB(200, 0x56, 0x93, 0x54);
-            canvas.drawARGB(0xff, 0xff, 0xff, 0xff);
-
-
-            canvas.drawBitmap(selectedImage, null, rectf, null);
-
-
-            //Bitmap template = BitmapFactory.decodeFile(template_path);
-            Bitmap template = loadTemplate(this);
-            canvas.drawBitmap(template, null, new RectF(0,0,1080,1080), null); //// TODO: 21-Jan-17 might be CPU intensive
-
-            Paint paint = new Paint();
-            paint.setColor(Color.WHITE);
-            paint.setStrokeWidth(4);
-            float text_size = 46;
-            float text_start_y = 880;
-            float text_padding = 6;
-
-            paint.setTextSize(text_size);
-            paint.setTypeface(typeface);
-
-            String info[] = new String[] {"Name: ", "Price: ", "Phone: "};
-            for (int i = 0; i < 3; i++) {
-                if (i == 2) {paint.setUnderlineText(true);}
-                canvas.drawText(info[i]+data.get(i+1), 150, text_start_y, paint);
-                text_start_y += (text_size + text_padding);
-            }
-
-            imageView.setImageBitmap(bitmap);
-
-        } catch (IOException e) {
+            selectedImage = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
+            return;
         }
+
+
+        int width = selectedImage.getWidth();
+        int height = selectedImage.getHeight();
+
+        int new_height, new_width;
+
+        int longest_side = (height > width) ? height : width;
+
+        new_height = (int)(height * 1.0 * IMAGE_SIZE / longest_side);
+        new_width =  (int)(width * 1.0 * IMAGE_SIZE / longest_side);
+
+        //rectf dimensions
+        int rectf_left = (IMAGE_SIZE - new_width)/2;
+        int rectf_right = rectf_left + new_width;
+        int rectf_top = (IMAGE_SIZE - new_height)/2;
+        int rectf_bottom = rectf_top + new_height;
+        RectF rectf = new RectF(rectf_left, rectf_top, rectf_right , rectf_bottom);
+
+        MyApp.log(width + " -- " + height);
+        MyApp.log(new_width + " -- " + new_height);
+
+        bitmap = Bitmap.createBitmap(IMAGE_SIZE, IMAGE_SIZE, null); //create new empty bitmap;
+
+        Canvas canvas = new Canvas(bitmap); //init canvas with bitmap for height
+        canvas.drawBitmap(selectedImage, null, rectf, null);
+
+
+        //Bitmap template = BitmapFactory.decodeFile(template_path);
+        Bitmap template = ImageUtils.loadTemplate(template_path);
+        canvas.drawBitmap(template, null, new RectF(0,0,1080,1080), null); //// TODO: 21-Jan-17 might be CPU intensive
+
+        Paint paint = new Paint();
+        paint.setColor(Color.WHITE);
+        paint.setStrokeWidth(4);
+        float text_size = 46;
+        float text_start_y = 880;
+        float text_padding = 6;
+
+        paint.setTextSize(text_size);
+        paint.setTypeface(typeface);
+
+        String info[] = new String[] {"Name: ", "Price: ", "Phone: "};
+        for (int i = 0; i < 3; i++) {
+            if (i == 2) {paint.setUnderlineText(true);}
+            canvas.drawText(info[i]+data.get(i+1), 150, text_start_y, paint);
+            text_start_y += (text_size + text_padding);
+        }
+
+        imageView.setImageBitmap(bitmap);
+
 
     }
 
@@ -127,11 +124,6 @@ public class EditorActivity extends AppCompatActivity {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
-    private Bitmap loadTemplate(Context context) throws IOException {
-        InputStream inputStream = getAssets().open("sample_template.png");
-        return BitmapFactory.decodeStream(inputStream);
-
-    }
 
     private Bitmap merge(Bitmap bmp1, Bitmap bmp2) {
         Bitmap bmOverlay = Bitmap.createBitmap(bmp1.getWidth(), bmp1.getHeight(), bmp1.getConfig());

@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mj.frameapp">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -25,6 +25,7 @@
         <activity android:name=".activities.EditorActivity" />
         <activity android:name=".activities.ChooseImageActivity" />
         <activity android:name=".activities.BeiActivity" />
+        <activity android:name=".activities.ChooseTemplateActivity"></activity>
     </application>
 
 </manifest>
