@@ -4,7 +4,7 @@
     android:id="@+id/activity_choose_template"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mj.frameapp.activities.ChooseTemplateActivity">
+    tools:context="com.mj.frameapp.activities.Context">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"

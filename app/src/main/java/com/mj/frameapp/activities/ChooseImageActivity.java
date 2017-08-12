@@ -1,6 +1,5 @@
 package com.mj.frameapp.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -34,7 +33,7 @@ public class ChooseImageActivity extends AppCompatActivity {
 
 
     @Override
-    protected void attachBaseContext(Context newBase) {
+    protected void attachBaseContext(android.content.Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
@@ -61,7 +60,7 @@ public class ChooseImageActivity extends AppCompatActivity {
 
     private void startEditActivity(Uri uri) {
 
-        Intent intent = new Intent(this, ChooseTemplateActivity.class);
+        Intent intent = new Intent(this, Context.class);
         intent.putExtra(BeiActivity.CURRENT_IMAGE_URI, uri.toString());
         startActivity(intent);
     }

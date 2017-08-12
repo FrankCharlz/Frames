@@ -1,4 +1,4 @@
-package com.mj.frameapp.activities;
+package com.mj.frameapp.adapters;
 
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.mj.frameapp.MyApp;
 import com.mj.frameapp.R;
+import com.mj.frameapp.activities.Context;
 
 import java.io.File;
 import java.util.Arrays;
@@ -17,16 +18,19 @@ import java.util.List;
 /**
  * Created by Frank on 11-Aug-17.
  */
+
 public class TemplatesAdapter extends RecyclerView.Adapter<TemplatesAdapter.ViewHolder> {
 
+    private final Context context;
     private List<File> templates;
 
-    public TemplatesAdapter() {
+    public TemplatesAdapter(Context context) {
         super();
+        this.context = context;
 
         File folder = MyApp.getAppFolder();
         if (folder == null || folder.list() == null) {
-            //// TODO: 11-Aug-17  shoukd kill activity
+            //// TODO: 11-Aug-17  should kill activity
             MyApp.log("app folder is null can't proceed");
             return;
         }
@@ -56,11 +60,11 @@ public class TemplatesAdapter extends RecyclerView.Adapter<TemplatesAdapter.View
         return templates.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
-        public final ImageView tImgv;
+        final ImageView tImgv;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             tImgv = (ImageView) itemView.findViewById(R.id.item_image);
 

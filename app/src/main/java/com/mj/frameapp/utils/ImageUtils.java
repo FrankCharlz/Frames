@@ -1,4 +1,4 @@
-package com.mj.frameapp;
+package com.mj.frameapp.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
