@@ -1,41 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
+    android:orientation="vertical"
     tools:context="com.mj.frameapp.activities.RegistrationActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#22000000">
 
-    <TextView
-        style="@style/ButtonStyles"
-        android:text="ENDELEA"
-        android:id="@+id/bth_submit"
-        android:onClick="completeRegistration"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        />
+        <TextView
+            style="@style/TitleStyle"
+            android:text="Register"
+            android:gravity="center_vertical"
+            android:onClick="completeRegistration" />
 
-    <EditText
-        android:id="@+id/ed_phone"
-        android:hint="Namba ya simu"
-        android:inputType="phone"
-        style="@style/EditTextStyles"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/ed_name"
-        android:layout_alignEnd="@+id/ed_name" />
+    </android.support.v7.widget.Toolbar>
 
-    <EditText
-        android:id="@+id/ed_name"
-        android:hint="Username ya Instagram"
-        android:inputType="text"
-        style="@style/EditTextStyles"
-        android:layout_above="@+id/ed_phone"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="24dp"
+        android:padding="16dp">
 
 
-</RelativeLayout>
+        <EditText
+            android:id="@+id/ed_name"
+            android:hint="Username ya Instagram"
+            android:inputType="text"
+            style="@style/EditTextStyles"
+            android:layout_marginBottom="40dp" />
+
+
+        <EditText
+            android:id="@+id/ed_phone"
+            android:hint="Namba ya simu"
+            android:inputType="phone"
+            style="@style/EditTextStyles"/>
+
+
+        <TextView
+            style="@style/ButtonStyles"
+            android:text="ENDELEA"
+            android:id="@+id/bth_submit"
+            android:onClick="completeRegistration"
+            />
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

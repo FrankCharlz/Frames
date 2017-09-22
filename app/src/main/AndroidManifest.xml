@@ -25,7 +25,7 @@
         <activity android:name=".activities.EditorActivity" />
         <activity android:name=".activities.ChooseImageActivity" />
         <activity android:name=".activities.BeiActivity" />
-        <activity android:name=".activities.Context"></activity>
+        <activity android:name=".activities.ChooseTemplateActivity" />
     </application>
 
 </manifest>

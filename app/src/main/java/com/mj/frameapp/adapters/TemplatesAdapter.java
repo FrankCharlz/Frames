@@ -1,6 +1,7 @@
 package com.mj.frameapp.adapters;
 
-import android.net.Uri;
+import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +10,9 @@ import android.widget.ImageView;
 
 import com.mj.frameapp.MyApp;
 import com.mj.frameapp.R;
-import com.mj.frameapp.activities.Context;
+import com.mj.frameapp.activities.ChooseTemplateActivity;
+import com.mj.frameapp.utils.ImageMaker;
 
-import java.io.File;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,21 +22,22 @@ import java.util.List;
 public class TemplatesAdapter extends RecyclerView.Adapter<TemplatesAdapter.ViewHolder> {
 
     private final Context context;
-    private List<File> templates;
+    private final Bitmap selectedImage;
+    private List<String> templates;
 
-    public TemplatesAdapter(Context context) {
-        super();
-        this.context = context;
 
-        File folder = MyApp.getAppFolder();
-        if (folder == null || folder.list() == null) {
-            //// TODO: 11-Aug-17  should kill activity
-            MyApp.log("app folder is null can't proceed");
-            return;
-        }
+    public TemplatesAdapter(ChooseTemplateActivity chooseTemplateActivity, Bitmap selectedImage, List<String> templates) {
+        this.context = chooseTemplateActivity;
+        this.templates = templates;
+        this.selectedImage = selectedImage;
+        MyApp.log("templates adapter created");
+    }
 
-         templates = Arrays.asList(folder.listFiles());
 
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        MyApp.log("adapter attached to recycler view");
     }
 
     @Override
@@ -50,8 +51,14 @@ public class TemplatesAdapter extends RecyclerView.Adapter<TemplatesAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        File currentItem = templates.get(position);
-        holder.tImgv.setImageURI(Uri.fromFile(currentItem));
+        //String currentItem = templates.get(position);
+        //MyApp.log(currentItem);
+        //holder.tImgv.setImageDrawable(context.getDrawable(templates.get(position)));
+        //holder.tImgv.setImageDrawable(ContextCompat.getDrawable(context, templates.get(position)));
+
+
+        Bitmap bitmap = ImageMaker.make(templates.get(position), selectedImage);
+        holder.tImgv.setImageBitmap(bitmap);
 
     }
 

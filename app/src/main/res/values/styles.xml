@@ -25,12 +25,21 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">@dimen/btn_padding</item>
+        <item name="android:layout_margin">@dimen/ed_margin</item>
         <item name="android:textSize">@dimen/btn_text_size</item>
         <!--<item name="android:layout_margin">@dimen/ed_margin</item>-->
-        <item name="android:background">@color/light_blue</item>
+        <item name="android:background">@drawable/btn_background</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="TitleStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/btn_padding</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Large</item>
     </style>
 
 </resources>

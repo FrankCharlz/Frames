@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FrameApp</string>
     <string name="pick_template">Select a template</string>
+    <string name="just_chill_b">Just chill b</string>
 </resources>

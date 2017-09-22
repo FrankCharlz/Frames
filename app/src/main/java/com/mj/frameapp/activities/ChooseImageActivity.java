@@ -16,6 +16,7 @@ public class ChooseImageActivity extends AppCompatActivity {
 
     private static final int ACTION_REQUEST_GALLERY = 9;
     private static final String USER_PIC_URI_AS_STRING = "pic_uri";
+    public static final String CURRENT_IMAGE_URI = "cjjksdnu";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +61,8 @@ public class ChooseImageActivity extends AppCompatActivity {
 
     private void startEditActivity(Uri uri) {
 
-        Intent intent = new Intent(this, Context.class);
-        intent.putExtra(BeiActivity.CURRENT_IMAGE_URI, uri.toString());
+        Intent intent = new Intent(this, ChooseTemplateActivity.class);
+        intent.putExtra(CURRENT_IMAGE_URI, uri.toString());
         startActivity(intent);
     }
 }

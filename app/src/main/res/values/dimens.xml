@@ -5,7 +5,8 @@
     <dimen name="ed_margin">12dp</dimen>
 
 
-    <dimen name="btn_padding">14dp</dimen>
-    <dimen name="btn_text_size">18sp</dimen>
+    <dimen name="btn_padding">12dp</dimen>
+    <dimen name="btn_text_size">16sp</dimen>
+    <dimen name="radius_medium">16dp</dimen>
 
 </resources>
